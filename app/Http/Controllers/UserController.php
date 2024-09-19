@@ -12,10 +12,18 @@ class UserController extends Controller
 
         //JS 4 Prak 2.1 no 6
         // $user = UserModel::firstwhere('level_id', 1);
+
         //JS 4 Prak 2.1 no 8
-        $user = UserModel::findOr(20, ['username', 'nama'], function(){
+        /*$user = UserModel::findOr(20, ['username', 'nama'], function(){
             abort(404);
-        });
+        });*/
+
+        //JS 4 Prak 2.2 no 1
+        // $user = UserModel::findOrFail(1);
+
+        //JS 4 Prak 2.2 no 3
+        $user = UserModel::where('username', 'manager9')->firstOrFail();
+    
         return view('user', ['data' => $user]);
 
         //JS 4 Prak 1
