@@ -9,7 +9,17 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
+
+        //JS 4 Prak 2.1 no 6
+        // $user = UserModel::firstwhere('level_id', 1);
+        //JS 4 Prak 2.1 no 8
+        $user = UserModel::findOr(20, ['username', 'nama'], function(){
+            abort(404);
+        });
+        return view('user', ['data' => $user]);
+
         //JS 4 Prak 1
+        /*
        $data = [
         'level_id' => 2,
         'username' => 'manager_tiga',
@@ -17,12 +27,13 @@ class UserController extends Controller
         'password' => Hash::make('12345')
        ];
        UserModel::create($data);
-
-       //JS 3
+        */
+      
       //coba akses model UserModel
-        $user = UserModel::all(); //Ambil semua data dari tabel m_user
-        return view('user', ['data' => $user]);
+        //$user = UserModel::all(); //Ambil semua data dari tabel m_user
+        // return view('user', ['data' => $user]);
 
+         //JS 3
                 // tambah data user dengan Eloquent Model
         /*$data = [
             'username' => 'customer-1',
