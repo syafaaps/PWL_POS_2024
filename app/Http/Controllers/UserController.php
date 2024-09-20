@@ -22,8 +22,14 @@ class UserController extends Controller
         // $user = UserModel::findOrFail(1);
 
         //JS 4 Prak 2.2 no 3
-        $user = UserModel::where('username', 'manager9')->firstOrFail();
+       // $user = UserModel::where('username', 'manager9')->firstOrFail();
     
+        // JS 4 Prak 2.3 no 1
+        // $user = UserModel::where('level_id', 2)->count();
+        // dd($user);
+
+        // JS 4 Prak 2.3 no 3
+        $user = UserModel::where('level_id', 2)->count();
         return view('user', ['data' => $user]);
 
         //JS 4 Prak 1
