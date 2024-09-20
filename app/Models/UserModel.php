@@ -13,5 +13,5 @@ class UserModel extends Model
     protected $primaryKey = 'user_id';
     
     //JS 4 Prak 1
-    protected $fillable = ['level_id', 'username', 'nama'];
+    protected $fillable = ['level_id', 'username', 'nama', 'password'];
 }

@@ -29,8 +29,44 @@ class UserController extends Controller
         // dd($user);
 
         // JS 4 Prak 2.3 no 3
-        $user = UserModel::where('level_id', 2)->count();
-        return view('user', ['data' => $user]);
+       // $user = UserModel::where('level_id', 2)->count();
+
+        //JS 4 Prak 2.4 no 6
+    //    $user = UserModel::firstOrCreate(
+    //     [
+    //         'username'=> 'manager',
+    //         'nama' => 'Manager',
+    //     ],);
+
+       // JS 4 Prak 2.4 no1-4
+    //    $user = UserModel::firstOrCreate(
+    //     [
+    //         'username'=> 'manager22',
+    //         'nama' => 'Manager Dua Dua',
+    //         'password' => Hash::make('12345'),
+    //         'level_id' => 2
+    //     ],
+    // );
+    
+    //     //JS 4 Prak 2.4 no 6
+    //    $user = UserModel::firstOrNew(
+    //     [
+    //         'username'=> 'manager',
+    //         'nama' => 'Manager',
+    //     ],);
+
+        //JS 4 Prak 2.4 no 8
+       $user = UserModel::firstOrNew(
+        [
+            'username'=> 'manager33',
+            'nama' => 'Manager Tiga Tiga',
+            'password' => Hash::make('12345'),
+            'level_id' => 2
+        ],);
+        $user->save();
+    return view('user', ['data' => $user]);
+
+        
 
         //JS 4 Prak 1
         /*
