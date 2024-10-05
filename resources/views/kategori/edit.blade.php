@@ -1,12 +1,10 @@
 @extends('layouts.template')
-
 @section('content')
     <div class="card card-outline card-primary">
         <div class="card-header">
             <h3 class="card-title">{{ $page->title }}</h3>
             <div class="card-tools"></div>
         </div>
-
         <div class="card-body">
             @empty($kategori)
                 <div class="alert alert-danger alert-dismissible">
@@ -30,7 +28,6 @@
                             @enderror
                         </div>
                     </div>
-
                     <!-- Nama kategori Field -->
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Nama kategori</label>
@@ -42,7 +39,6 @@
                             @enderror
                         </div>
                     </div>
-
                     <!-- Submit and Back Buttons -->
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label"></label>
@@ -56,8 +52,6 @@
         </div>
     </div>
 @endsection
-
 @push('css')
 @endpush
-
 @push('js')
