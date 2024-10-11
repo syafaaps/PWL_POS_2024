@@ -103,7 +103,9 @@ Route::group(['prefix' => 'kategori'], function(){
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'level'], function(){
+
+Route::middleware(['authorize:ADM'])->group(function(){
+    Route::group(['prefix' => 'level'], function(){
     Route::get('/', [LevelController::class, 'index']);
     Route::post('/list', [LevelController::class, 'list']);
     Route::get('/create', [LevelController::class, 'create']);
@@ -137,4 +139,5 @@ Route::group(['prefix' => 'supplier'], function(){
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
 });
 
+});
 });
