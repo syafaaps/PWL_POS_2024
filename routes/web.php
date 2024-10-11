@@ -10,6 +10,9 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AuthController;
 
 use Monolog\Level;
+// Tugas Register
+Route::get('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'postRegister']);
 
 //Jobsheet 7 
 Route::pattern('id', '[0-9]+'); //artinya ketika ada parameter{id}, maka harus berupa angka
