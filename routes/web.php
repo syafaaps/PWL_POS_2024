@@ -54,6 +54,7 @@ Route::get('/', [WelcomeController::class,'index']);
 // Route::get('/level',[LevelController::class, 'index']);
 // Route::get('/kategori',[KategoriController::class, 'index']);
 
+Route::middleware(['authorize:ADM'])->group(function(){
 Route::group(['prefix' => 'user'], function(){
     Route::get('/', [UserController::class, 'index']);          //menampilkan halaman awal user
     Route::post('/list', [UserController::class, 'list']);      //menampilkan data user dalam bentuk json untuk datatables
@@ -69,6 +70,7 @@ Route::group(['prefix' => 'user'], function(){
     Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);  //tampilan form confirm ddelete user Ajax
     Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']); //untuk hapus data user ajax
     Route::delete('/{id}', [UserController::class, 'destroy']); //mengahapus data user
+});
 });
 
 Route::middleware(['authorize:ADM'])->group(function(){
@@ -108,6 +110,7 @@ Route::group(['prefix' => 'barang'], function(){
 });
 });
 
+Route::middleware(['authorize:ADM,MNG'])->group(function(){
 Route::group(['prefix' => 'kategori'], function(){
     Route::get('/', [KategoriController::class, 'index']);
     Route::post('/list', [KategoriController::class, 'list']);
@@ -124,7 +127,9 @@ Route::group(['prefix' => 'kategori'], function(){
     Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); 
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
 });
+});
 
+Route::middleware(['authorize:ADM,MNG' ])->group(function(){
 Route::group(['prefix' => 'supplier'], function(){
     Route::get('/', [SupplierController::class, 'index']);
     Route::post('/list', [SupplierController::class, 'list']);
@@ -140,5 +145,6 @@ Route::group(['prefix' => 'supplier'], function(){
     Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']);  
     Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']); 
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
+});
 });
 });
