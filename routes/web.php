@@ -74,9 +74,9 @@ Route::group(['prefix' => 'user'], function(){
     Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']); //untuk hapus data user ajax
     Route::delete('/{id}', [UserController::class, 'destroy']); //mengahapus data user
     Route::get('/import', [UserController::class, 'import']);
-        Route::post('/import_ajax', [UserController::class, 'import_ajax']);
-        Route::get('/export_excel', [UserController::class, 'export_excel']); // export excel
-        Route::get('/export_pdf', [UserController::class, 'export_pdf']);
+    Route::post('/import_ajax', [UserController::class, 'import_ajax']);
+    Route::get('/export_excel', [UserController::class, 'export_excel']); // export excel
+    Route::get('/export_pdf', [UserController::class, 'export_pdf']);
 });
 });
 
@@ -143,6 +143,10 @@ Route::group(['prefix' => 'kategori'], function(){
     Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']);  
     Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); 
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
+    Route::get('/import',[KategoriController::class,'import']);
+    Route::post('/import_ajax',[KategoriController::class,'import_ajax']);
+    Route::get('/export_excel',[KategoriController::class,'export_excel']);
+    Route::get('/export_pdf',[KategoriController::class,'export_pdf']);
 });
 });
 
