@@ -404,7 +404,7 @@ class UserController extends Controller
         $pdf->setOption("isRemoteEnabled", true); // set true jika ada gambar dari url $pdf->render();
         return $pdf->stream('Data user' . date('Y-m-d H:i:s') . '.pdf');
     }
-
+    
 }
 
         //coba akses model UserModel
