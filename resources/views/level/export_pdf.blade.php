@@ -61,8 +61,7 @@
 <body>
     <table class="border-bottom-header">
         <tr>
-            <td width="15%" class="text-center">
-                <img src="{{ asset('polinema-bw.jpeg') }}" alt="Logo" style="max-height: 80px; width: auto;"></td>
+            <td width="15%" class="text-center"><img src="{{ asset('polinema-bw.png') }}"></td>
             <td width="85%">
                 <span class="text-center d-block font-11 font-bold mb-1">KEMENTERIAN
                     PENDIDIKAN, KEBUDAYAAN, RISET, DAN TEKNOLOGI</span>
@@ -76,23 +75,21 @@
             </td>
         </tr>
     </table>
-    <h3 class="text-center">LAPORAN DATA USER</h4>
+    <h3 class="text-center">LAPORAN DATA LEVEL</h4>
         <table class="border-all">
             <thead>
                 <tr>
                     <th class="text-center">No</th>
-                    <th>Username</th>
-                    <th>Nama</th>
-                    <th>Level</th>
+                    <th>Kode Level</th>
+                    <th>Nama Level</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($user as $b)
+                @foreach ($level as $b)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $b->username }}</td>
-                        <td>{{ $b->nama }}</td>
-                        <td>{{ $b->level->level_nama }}</td>
+                        <td>{{ $b->level_kode }}</td>
+                        <td>{{ $b->level_nama }}</td>
                     </tr>
                 @endforeach
             </tbody>
