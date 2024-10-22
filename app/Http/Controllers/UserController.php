@@ -55,7 +55,11 @@ class UserController extends Controller
         //JOBSHEET 5
         $breadcrumb = (object) [
             'title' => 'Daftar User',
-            'list' => ['Home', 'User']
+            'list' =>
+            [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'User', 'url' => url('/user')],
+            ]
         ];
 
         $page = (object) [
@@ -182,7 +186,13 @@ class UserController extends Controller
     public function create(){
         $breadcrumb = (object) [
             'title' => 'Tambah User',
-            'list' => ['Home', 'User', 'Tambah']
+            'list' => 
+            [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'User', 'url' => url('/User')],
+                ['name' => 'Tambah', 'url' => url('/Tambah')],
+                
+            ]
         ];
 
         $page = (object) [
@@ -222,7 +232,13 @@ class UserController extends Controller
 
         $breadcrumb = (object)[
             'title' => 'Detail User',
-            'list' => ['Home', 'User', 'Detail']
+            'list' => 
+            [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'User', 'url' => url('/User')],
+                ['name' => 'Detail', 'url' => url('/Detail')],
+                
+            ]
         ];
 
         $page = (object) [

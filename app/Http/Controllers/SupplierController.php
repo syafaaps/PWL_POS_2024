@@ -135,7 +135,11 @@ class suppliercontroller extends Controller
     public function index(){
         $breadcrumb = (object)[
             'title'=>'Daftar supplier',
-            'list'=>['Home','supplier']
+            'list'=>
+            [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'supplier', 'url' => url('/supplier')],
+            ]
         ];
 
         $page =(object)[
@@ -189,7 +193,13 @@ class suppliercontroller extends Controller
 
         $breadcrumb = (object)[
             'title'=>'Detail supplier',
-            'list'=>['Home','supplier','detail']
+            'list'=>
+            [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Supplier', 'url' => url('/Supplier')],
+                ['name' => 'Detail', 'url' => url('/Detail')],
+                
+            ]
         ];
 
         $page = (object)[

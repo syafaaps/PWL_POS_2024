@@ -168,7 +168,10 @@ class LevelController extends Controller
         //Menampilkan halaman awal user
         $breadcrumb = (object)[
             'title' => 'Daftar level',
-            'list' => ['Home', 'level']
+            'list' => [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Level', 'url' => url('/level')],
+            ]
         ];
 
         $page = (object) [
@@ -220,7 +223,11 @@ class LevelController extends Controller
     
             $breadcrumb = (object)[
                 'title' => 'Detail Level',
-                'list' => ['Home', 'level', 'detail']
+                'list' =>[
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Level', 'url' => url('/level')],
+                ['name' => 'Level', 'url' => url('/detail')]
+            ]
             ];
     
             $page = (object)[
@@ -238,7 +245,11 @@ class LevelController extends Controller
     
             $breadcrumb = (object)[
                 'title' => 'Edit Level',
-                'list' => ['Home', 'level', 'edit']
+                'list' =>[
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Level', 'url' => url('/level')],
+                ['name' => 'Level', 'url' => url('/edit')]
+            ]
             ];
     
             $page = (object)[

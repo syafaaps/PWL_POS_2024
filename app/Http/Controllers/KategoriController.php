@@ -173,7 +173,10 @@ class KategoriController extends Controller
         //Menampilkan halaman awal kategori
         $breadcrumb = (object)[
             'title'=>'Daftar kategori barang',
-            'list'=>['Home','kategori']
+            'list'=>[
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Kategori', 'url' => url('/kategori')]
+            ]
         ];
 
         $page = (object)[
@@ -191,7 +194,11 @@ class KategoriController extends Controller
     public function create(){
         $breadcrumb = (object)[
             'title'=>'Tambah kategori barang',
-            'list'=>['Home','kategori','tambah']
+            'list'=>[
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Kategori', 'url' => url('/kategori')],
+                ['name' => 'Kategori', 'url' => url('/tambah')]
+            ]
         ];
 
         $page = (object)[
@@ -226,7 +233,11 @@ class KategoriController extends Controller
 
         $breadcrumb = (object)[
             'title'=>'Detail Kategori',
-            'list'=>['Home','kategori','detail']
+            'list'=>[
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Kategori', 'url' => url('/kategori')],
+                ['name' => 'Kategori', 'url' => url('/detail')]
+            ]
         ];
 
         $page = (object)[
@@ -244,7 +255,11 @@ class KategoriController extends Controller
 
         $breadcrumb = (object)[
             'title'=>'Edit kategori',
-            'list'=>['Home','kategori','edit']
+            'list'=>[
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Kategori', 'url' => url('/kategori')],
+                ['name' => 'Kategori', 'url' => url('/edit')]
+            ]
         ];
 
         $page = (object)[

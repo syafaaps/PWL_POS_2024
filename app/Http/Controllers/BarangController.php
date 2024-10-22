@@ -19,8 +19,11 @@ class BarangController extends Controller
     {
         $activeMenu = 'barang';
         $breadcrumb = (object) [
-            'title' => 'Data Barang',
-            'list' => ['Home', 'Barang']
+            'title' => 'Barang',
+            'list' => [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Barang', 'url' => url('/barang')]
+            ]
         ];
         $kategori = KategoriModel::select('kategori_id', 'kategori_nama')->get();
         return view('barang.index', [
@@ -49,6 +52,7 @@ class BarangController extends Controller
             ->rawColumns(['aksi'])
             ->make(true);
     }
+
 
     public function create_ajax()
     {
@@ -91,8 +95,8 @@ class BarangController extends Controller
     public function edit_ajax($id)
     {
         $barang = BarangModel::find($id);
-        $level = LevelModel::select('level_id', 'level_nama')->get();
-        return view('barang.edit_ajax', ['barang' => $barang, 'level' => $level]);
+        $kategori = KategoriModel::select('kategori_id', 'kategori_nama')->get();
+        return view('barang.edit_ajax', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
     public function update_ajax(Request $request, $id)
@@ -159,6 +163,28 @@ class BarangController extends Controller
         }
 
         return redirect('/');
+    }
+
+    public function show_ajax(string $id){
+        $barang = BarangModel::with('kategori')->find($id);
+
+        $breadcrumb = (object)[
+            'title' => 'Detail Barang',
+            'list' => 
+            [
+                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Barang', 'url' => url('/Barang')],
+                ['name' => 'Detail', 'url' => url('/Detail')]
+            ]
+        ];
+
+        $page = (object) [
+            'title' => 'Detail Barang'
+        ];
+
+        $activeMenu = 'barang'; //set menu yang sedang aktif
+
+        return view('barang.show_ajax', ['breadcrumb' => $breadcrumb, 'page' => $page, 'barang' => $barang, 'activeMenu' => $activeMenu]);
     }
 
     public function import()
