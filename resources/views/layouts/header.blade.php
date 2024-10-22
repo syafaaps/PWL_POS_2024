@@ -132,5 +132,26 @@
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          <img src="{{ auth()->user()->avatar ? asset('storage/avatars/' . auth()->user()->avatar) : asset('default-avatar.png') }}"
+            class="rounded-circle" width="20" height="20" alt="Avatar">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">{{ auth()->user()->nama }}</span>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{{ url('/profil') }}">
+            <i class="fas fa-user-edit mr-2"></i> Edit Profil
+          </a>
+          <div class="dropdown-divider"></div>
+          <form action="{{ url('logout') }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="submit" class="dropdown-item" style="background: none; border: none; padding: 5px 15px; line-height: 1.5;">
+              <i class="fas fa-sign-out-alt mr-2"></i> Logout
+            </button>
+          </form>
+        </div>
+      </li>
     </ul>
   </nav>

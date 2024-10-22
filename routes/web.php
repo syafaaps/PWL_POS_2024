@@ -8,6 +8,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 use Monolog\Level;
 // Tugas Register
@@ -112,7 +113,8 @@ Route::group(['prefix' => 'barang'], function(){
     Route::get('/create_ajax', [BarangController::class, 'create_ajax']); 
     Route::post('/ajax', [BarangController::class, 'store_ajax']);   
     Route::get('/{id}', [BarangController::class, 'show']);
-    Route::get('/{id}/edit', [BarangController::class, 'edit']);
+    Route::get('/{id}/show_ajax', [BarangController::class, 'show_ajax']); 
+    // Route::get('/{id}/edit', [BarangController::class, 'edit']);
     Route::put('/{id}', [BarangController::class, 'update']);
     Route::get('/{id}/edit_ajax', [BarangController::class, 'edit_ajax']);
     Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']);  
@@ -171,5 +173,15 @@ Route::group(['prefix' => 'supplier'], function(){
     Route::get('/export_excel', [SupplierController::class, 'export_excel']); 
     Route::get('/export_pdf', [SupplierController::class, 'export_pdf']); 
 });
+});
+
+//profile 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
+    Route::post('/profil/update', [ProfileController::class, 'update'])->name('profil.update');
+    Route::post('/profil/update-avatar', [ProfileController::class, 'updateAvatar'])->name('profil.updateAvatar');
+    Route::post('/profil/update_data_diri', [ProfileController::class, 'updateDataDiri'])->name('profil.updateDataDiri');
+    Route::post('/profil/update_password', [ProfileController::class, 'updatePassword'])->name('profil.updatePassword');
+
 });
 });

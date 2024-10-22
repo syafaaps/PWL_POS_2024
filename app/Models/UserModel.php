@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable; // implementasi class Authenticatable
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserModel extends Authenticatable
 {
@@ -13,7 +14,7 @@ class UserModel extends Authenticatable
 
     protected $table = 'm_user';
     protected $primaryKey = 'user_id';
-    protected $fillable = ['username', 'password', 'nama', 'level_id', 'created_at', 'updated_at'];
+    protected $fillable = ['username', 'password', 'nama', 'level_id', 'created_at', 'avatar', 'updated_at'];
 
     protected $hidden = ['password']; // jangan di tampilkan saat select
 
@@ -25,6 +26,11 @@ class UserModel extends Authenticatable
     public function level(): BelongsTo
     {
         return $this->belongsTo(LevelModel :: class, 'level_id', 'level_id');
+    }
+
+    public function profil(): HasOne
+    {
+        return $this->hasOne(ProfilUserModel::class, 'user_id', 'user_id');
     }
 
     /**
@@ -57,4 +63,11 @@ class UserModel extends Authenticatable
     // {
     //     return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
     // }
+    // UserModel.php
+    public function getJenisKelamin()
+    {
+        return $this->profil ? $this->profil->jenis_kelamin : null;
+    }
+
+
 }
