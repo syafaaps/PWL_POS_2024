@@ -14,18 +14,22 @@ use App\Http\Controllers\SalesController;
 
 
 use Monolog\Level;
-// Tugas Register
-Route::get('register', [AuthController::class, 'register']);
-Route::post('register', [AuthController::class, 'postRegister']);
 
 //Jobsheet 7 
 Route::pattern('id', '[0-9]+'); //artinya ketika ada parameter{id}, maka harus berupa angka
 
-Route::get('login', [AuthController::class, 'login'])->name('login');
-Route::post('login', [AuthController::class, 'postlogin']);
-Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+// Route untuk landing page
+    Route::get('/landing', function () {
+        return view('landing');
+    })->name('landing');
 
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+// Tugas Register
+// Route untuk halaman register
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'postRegister']);
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'postlogin']);
 
 Route::middleware(['auth'])->group(function(){ //artinya semua route di dalam group ini harus login dulu
     //masukkan semua route yang perlu autentikasi disnii
@@ -54,6 +58,9 @@ Route::get('/user/ubah/{id}',[UserController::class, 'ubah']);
 Route::put('/user/ubah_simpan/{id}',[UserController::class, 'ubah_simpan']);
 Route::get('/user/hapus/{id}',[UserController::class, 'hapus']);
 */
+
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 //Jobsheet 5
 Route::get('/', [WelcomeController::class,'index']);

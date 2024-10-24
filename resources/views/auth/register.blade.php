@@ -14,13 +14,87 @@
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+
+    <style>
+        body {
+            background-image: url('{{ asset('photos/bg3.jpeg') }}'); /* URL gambar background */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif; /* Font Poppins yang elegan */
+        }
+        .login-box {
+            width: 500px; /* Membesarkan ukuran box */
+            background-color: rgba(255, 255, 255, 0.9); /* Overlay putih transparan */
+            padding: 40px; /* Padding lebih besar */
+            border-radius: 15px; /* Membuat sudut kotak lebih halus */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+        }
+        .login-box .card {
+            border: none;
+        }
+        .login-box .card-header {
+            background-color: #823460; /* Warna teal lebih lembut untuk mengurangi kontras */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            color: #ffffff; /* Warna teks tetap putih agar kontras dengan latar belakang */
+            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+            font-weight: 700; /* Berat font yang tebal */
+            font-size: 28px; /* Ukuran font yang cukup besar agar lebih jelas */
+            letter-spacing: 1px;
+            padding: 10px; /* Menambahkan padding agar teks terlihat lebih rapi */
+            text-align: center; /* Memastikan teks berada di tengah */
+        }
+        .login-box .card-body {
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #823460; /* Warna Teal */
+            border-color: #823460;
+            color: white;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            border-radius: 25px; /* Membuat tombol lebih bulat */
+        }
+        .btn-primary:hover {
+            background-color: #066A7F; /* Warna Teal lebih gelap saat hover */
+            border-color: #066A7F;
+        }
+        .input-group .form-control {
+            border-radius: 25px; /* Membulatkan tepi input field */
+            padding-left: 20px;
+            font-size: 16px;
+        }
+        .input-group-text {
+            border-radius: 25px; /* Membuat ikon lebih halus */
+            background-color: #f7f7f7;
+            color: #823460; /* Warna Teal untuk ikon */
+        }
+        .icheck-primary input {
+            background-color: #823460;
+        }
+        .login-box a {
+            color: #07889B; /* Menyelaraskan warna link dengan tema */
+        }
+        .login-box b {
+            color: #f7f7f7; 
+        }
+        .login-box a:hover {
+            color: #066A7F; /* Efek hover pada link */
+        }
+
+    </style>
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a>
+                <a href="{{ url('/') }}" class="h1"><b>TwinklePOS</b></a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Register a New User</p>
