@@ -9,6 +9,8 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StokController;
+
 
 use Monolog\Level;
 // Tugas Register
@@ -175,6 +177,18 @@ Route::group(['prefix' => 'supplier'], function(){
 });
 });
 
+Route::middleware(['authorize:ADM,MNG,STF'])->group(function(){
+    Route::group(['prefix' => 'stok'], function(){
+        Route::get('/', [StokController::class, 'index']);     
+        Route::post('/list', [StokController::class, 'list']);     
+        Route::get('/create_ajax', [StokController::class, 'create_ajax']); 
+        Route::post('/store_ajax', [StokController::class, 'store_ajax']);  
+        Route::get('/{id}/edit_stok', [StokController::class, 'edit_stok']); 
+        Route::put('/{id}/update_stok', [StokController::class, 'update_stok']);  
+        Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']);  
+        Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']); 
+    }); 
+});
 //profile 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
