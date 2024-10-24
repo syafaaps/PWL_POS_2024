@@ -10,6 +10,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StokController;
+use App\Http\Controllers\SalesController;
 
 
 use Monolog\Level;
@@ -189,6 +190,16 @@ Route::middleware(['authorize:ADM,MNG,STF'])->group(function(){
         Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']); 
     }); 
 });
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('sales')->group(function () {
+        Route::get('/', [SalesController::class, 'index'])->name('sales.index');
+        Route::get('/list', [SalesController::class, 'list'])->name('sales.list');
+        Route::get('/{id}/show_ajax', [SalesController::class, 'show_ajax'])->name('sales.show_ajax');
+        Route::get('/export_pdf', [SalesController::class, 'export_pdf'])->name('sales.export_pdf');
+    });
+});
+
+
 //profile 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [ProfileController::class, 'index'])->name('profil.index');
