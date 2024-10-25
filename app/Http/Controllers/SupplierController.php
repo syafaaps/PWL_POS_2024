@@ -137,7 +137,7 @@ class suppliercontroller extends Controller
             'title'=>'Daftar supplier',
             'list'=>
             [
-                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Home', 'url' => url('/dashboard')],
                 ['name' => 'supplier', 'url' => url('/supplier')],
             ]
         ];
@@ -195,7 +195,7 @@ class suppliercontroller extends Controller
             'title'=>'Detail supplier',
             'list'=>
             [
-                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Home', 'url' => url('/dashboard')],
                 ['name' => 'Supplier', 'url' => url('/Supplier')],
                 ['name' => 'Detail', 'url' => url('/Detail')],
                 
@@ -217,7 +217,13 @@ class suppliercontroller extends Controller
 
         $breadcrumb = (object)[
             'title'=>'Edit supplier',
-            'list'=>['Home','supplier','edit']
+            'list'=>
+            [
+                ['name' => 'Home', 'url' => url('/dashboard')],
+                ['name' => 'Supplier', 'url' => url('/supplier')],
+                ['name' => 'Edit', 'url' => url('/edit')],
+                
+            ]
         ];
 
         $page = (object)[

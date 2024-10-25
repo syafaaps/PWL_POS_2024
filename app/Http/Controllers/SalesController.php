@@ -19,7 +19,7 @@ public function index()
             'title' => 'Data Penjualan',
             'list' => 
             [
-                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Home', 'url' => url('/dashboard')],
                 ['name' => 'Sales', 'url' => url('/sales')]
             ]
         ];

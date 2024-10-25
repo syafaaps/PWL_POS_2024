@@ -19,7 +19,7 @@ use Monolog\Level;
 Route::pattern('id', '[0-9]+'); //artinya ketika ada parameter{id}, maka harus berupa angka
 
 // Route untuk landing page
-    Route::get('/landing', function () {
+    Route::get('/', function () {
         return view('landing');
     })->name('landing');
 
@@ -63,7 +63,7 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 //Jobsheet 5
-Route::get('/', [WelcomeController::class,'index']);
+Route::get('/dashboard', [WelcomeController::class,'index']);
 // Route::get('/barang', [UserController::class, 'index']);
 // Route::get('/level',[LevelController::class, 'index']);
 // Route::get('/kategori',[KategoriController::class, 'index']);
@@ -114,7 +114,7 @@ Route::middleware(['authorize:ADM'])->group(function(){
 });
 });
 
-Route::middleware(['authorize:ADM,MNG' ])->group(function(){
+Route::middleware(['authorize:ADM,MNG,STF' ])->group(function(){
 Route::group(['prefix' => 'barang'], function(){
     Route::get('/', [BarangController::class, 'index']);
     Route::post('/list', [BarangController::class, 'list']);
@@ -139,7 +139,7 @@ Route::group(['prefix' => 'barang'], function(){
 });
 });
 
-Route::middleware(['authorize:ADM,MNG'])->group(function(){
+Route::middleware(['authorize:ADM,MNG,STF'])->group(function(){
 Route::group(['prefix' => 'kategori'], function(){
     Route::get('/', [KategoriController::class, 'index']);
     Route::post('/list', [KategoriController::class, 'list']);

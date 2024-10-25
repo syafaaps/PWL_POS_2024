@@ -124,13 +124,6 @@
                         <p>Stok Barang</p>
                     </a>
                 </li>
-                <!-- Point of Sales -->
-                <li class="nav-item">
-                    <a href="{{ url('/pos') }}" class="nav-link {{ request()->is('pos*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cart-plus"></i>
-                        <p>Point of Sales</p>
-                    </a>
-                </li>
                 <!-- Data Kategori -->
                 <li class="nav-header">Data Barang</li>
                 <li class="nav-item">

@@ -57,7 +57,7 @@ class UserController extends Controller
             'title' => 'Daftar User',
             'list' =>
             [
-                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Home', 'url' => url('/dashboard')],
                 ['name' => 'User', 'url' => url('/user')],
             ]
         ];
@@ -188,7 +188,7 @@ class UserController extends Controller
             'title' => 'Tambah User',
             'list' => 
             [
-                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Home', 'url' => url('/dashboard')],
                 ['name' => 'User', 'url' => url('/User')],
                 ['name' => 'Tambah', 'url' => url('/Tambah')],
                 
@@ -234,7 +234,7 @@ class UserController extends Controller
             'title' => 'Detail User',
             'list' => 
             [
-                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Home', 'url' => url('/dashboard')],
                 ['name' => 'User', 'url' => url('/User')],
                 ['name' => 'Detail', 'url' => url('/Detail')],
                 

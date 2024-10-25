@@ -25,7 +25,7 @@ class StokController extends Controller
         $breadcrumb = (object)[
             'title' => 'Data Stok',
             'list' => [
-                ['name' => 'Home', 'url' => url('/')],
+                ['name' => 'Home', 'url' => url('/dashboard')],
                 ['name' => 'Stok', 'url' => url('/stok')],
             ]
         ];
@@ -54,14 +54,14 @@ class StokController extends Controller
             ->make(true);
     }
 
-    // private function getDropdownData()
-    // {
-    //     $supplier = SupplierModel::select('supplier_id', 'supplier_nama')->get();
-    //     $barang = BarangModel::select('barang_id', 'barang_nama')->get();
-    //     $user = UserModel::select('user_id', 'nama')->get();
+    private function getDropdownData()
+    {
+        $supplier = SupplierModel::select('supplier_id', 'supplier_nama')->get();
+        $barang = BarangModel::select('barang_id', 'barang_nama')->get();
+        $user = UserModel::select('user_id', 'nama')->get();
 
-    //     return compact('supplier', 'barang', 'user');
-    // }
+        return compact('supplier', 'barang', 'user');
+    }
 
     // public function create_ajax()
     // {
@@ -187,6 +187,60 @@ class StokController extends Controller
         return view('stok.edit_stok', array_merge($this->getDropdownData(), ['stok' => $stok]));
     }
 
+    // public function update_stok(Request $request, $id)
+    // {
+    //     if ($request->ajax() || $request->wantsJson()) {
+    //         $stok = StokModel::find($id);
+    //         if (!$stok) {
+    //             return response()->json([
+    //                 'status' => false,
+    //                 'message' => 'Data tidak ditemukan'
+    //             ]);
+    //         }
+    //         // Gabungkan data yang tidak diubah dengan data yang diinputkan
+    //         $request->merge([
+    //             'supplier_id' => $stok->supplier_id,
+    //             'barang_id' => $stok->barang_id,
+    //             'user_id' => $stok->user_id,
+    //             'stok_tanggal' => $stok->stok_tanggal,
+    //         ]);
+    //         $rules = [
+    //             'supplier_id' => ['required', 'integer', 'exists:m_supplier,supplier_id'],
+    //             'barang_id' => ['required', 'integer', 'exists:m_barang,barang_id'],
+    //             'user_id' => ['required', 'integer', 'exists:m_user,user_id'],
+    //             'stok_tanggal' => ['required', 'date_format:Y-m-d H:i:s'],
+    //             'stok_change' => ['required', 'integer'],
+    //             'operation' => ['required', 'in:add,subtract'],
+    //         ];
+    //         $validator = Validator::make($request->all(), $rules);
+    //         if ($validator->fails()) {
+    //             return response()->json([
+    //                 'status' => false,
+    //                 'message' => 'Validasi gagal.',
+    //                 'msgField' => $validator->errors()
+    //             ]);
+    //         }
+    //         // Update stok jumlah berdasarkan operasi
+    //         if ($request->operation === 'add') {
+    //             $stok->stok_jumlah += $request->stok_change;
+    //         } elseif ($request->operation === 'subtract') {
+    //             $stok->stok_jumlah -= $request->stok_change;
+    //             if ($stok->stok_jumlah < 0) {
+    //                 return response()->json([
+    //                     'status' => false,
+    //                     'message' => 'Jumlah stok tidak boleh kurang dari 0.'
+    //                 ]);
+    //             }
+    //         }
+    //         $stok->stok_tanggal = now(); // Update tanggal stok
+    //         $stok->save();
+    //         return response()->json([
+    //             'status' => true,
+    //             'message' => 'Data berhasil diupdate'
+    //         ]);
+    //     }
+    //     return redirect('/stok');
+    // }
     public function update_stok(Request $request, $id)
     {
         if ($request->ajax() || $request->wantsJson()) {
