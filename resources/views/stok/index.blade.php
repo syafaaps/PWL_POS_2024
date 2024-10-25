@@ -7,6 +7,9 @@
         <div class="card-tools">
             <!-- Tombol untuk menambahkan stok baru -->
             <button onclick="modalAction('{{ url('/stok/create_ajax') }}')" class="btn btn-success">Add New Stock</button>
+            <button onclick="modalAction('{{ url('/stok/import') }}')" class="btn btn-info">Import Stok</button>
+            <a href="{{ url('/stok/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"></i> Export Stok</a>
+            <a href="{{ url('/stok/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Stok</a>
         </div>
     </div>
     <div class="card-body">

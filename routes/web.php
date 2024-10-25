@@ -194,7 +194,11 @@ Route::middleware(['authorize:ADM,MNG,STF'])->group(function(){
         Route::get('/{id}/edit_stok', [StokController::class, 'edit_stok']); 
         Route::put('/{id}/update_stok', [StokController::class, 'update_stok']);  
         Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']);  
-        Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']); 
+        Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']);
+        Route::get('/import',[StokController::class,'import']);
+        Route::post('/import_ajax',[StokController::class,'import_ajax']);
+        Route::get('/export_excel',[StokController::class,'export_excel']);
+        Route::get('/export_pdf',[StokController::class,'export_pdf']);
     }); 
 });
 Route::middleware(['auth'])->group(function () {
