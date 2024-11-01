@@ -7,16 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable; // implementasi class Authenticatable
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class UserModel extends Authenticatable
+class UserModel extends Authenticatable implements JWTSubject
 {
     use HasFactory;
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     protected $table = 'm_user';
     protected $primaryKey = 'user_id';
     protected $fillable = ['username', 'password', 'nama', 'level_id', 'created_at', 'avatar', 'updated_at'];
 
-    protected $hidden = ['password']; // jangan di tampilkan saat select
+    //protected $hidden = ['password']; // jangan di tampilkan saat select
 
     protected $casts = ['password' => 'hashed']; // casting password agar otomatis di hash
 
