@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable; // implementasi class Authenticatable
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class UserModel extends Authenticatable implements JWTSubject
 {
@@ -24,24 +25,43 @@ class UserModel extends Authenticatable implements JWTSubject
 
     protected $table = 'm_user';
     protected $primaryKey = 'user_id';
-    protected $fillable = ['username', 'password', 'nama', 'level_id', 'created_at', 'avatar', 'updated_at'];
+    protected $fillable = [
+        'username',
+        'nama',
+        'password',
+        'level_id',
+        'avatar'//tambahan
+    ];
+        
+    //protected $fillable = ['username', 'password', 'nama', 'level_id', 'created_at', 'avatar', 'updated_at'];
 
     //protected $hidden = ['password']; // jangan di tampilkan saat select
 
-    protected $casts = ['password' => 'hashed']; // casting password agar otomatis di hash
+    //protected $casts = ['password' => 'hashed']; // casting password agar otomatis di hash
 
     /**
     * Relasi ke tabel level
     */
-    public function level(): BelongsTo
+    public function level()
     {
-        return $this->belongsTo(LevelModel :: class, 'level_id', 'level_id');
+        return $this->belongsTo(LevelModel::class, 'level_id',
+    'level_id');
     }
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($avatar) => url('/storage/posts/' . $avatar),
+        );
+    }
+    // public function level(): BelongsTo
+    // {
+    //     return $this->belongsTo(LevelModel :: class, 'level_id', 'level_id');
+    // }
 
-    public function profil(): HasOne
-    {
-        return $this->hasOne(ProfilUserModel::class, 'user_id', 'user_id');
-    }
+    // public function profil(): HasOne
+    // {
+    //     return $this->hasOne(ProfilUserModel::class, 'user_id', 'user_id');
+    // }
 
     /**
 

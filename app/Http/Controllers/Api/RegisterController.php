@@ -16,7 +16,8 @@ class RegisterController extends Controller
             'username' => 'required',
             'nama' => 'required',
             'password' => 'required|min:5|confirmed',
-            'level_id' => 'required' 
+            'level_id' => 'required',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
     
         //if validations fails
@@ -24,12 +25,14 @@ class RegisterController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
+        $avatar = $request->file('avatar');
         //create user
         $user = UserModel::create([
             'username' => $request->username,
             'nama' => $request->nama,
             'password' => bcrypt($request->password),
             'level_id' => $request->level_id,
+            'avatar' => $avatar->hashName(),
         ]);
         
         //return response JSON user is created
