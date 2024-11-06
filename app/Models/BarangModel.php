@@ -10,7 +10,7 @@ class BarangModel extends Model
     protected $table = 'm_barang'; // Nama tabel barang
     protected $primaryKey = 'barang_id';
 
-    protected $fillable = ['barang_kode', 'barang_nama', 'kategori_id'];
+    protected $fillable = ['barang_kode', 'barang_nama', 'kategori_id', 'harga_jual', 'harga_beli'];
 
     // Relasi ke Kategori
     public function kategori()

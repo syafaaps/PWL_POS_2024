@@ -7,8 +7,8 @@ use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\LevelController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\BarangController;
+use App\Http\Controllers\Api\KategoriController;
+use App\Http\Controllers\Api\BarangController;
 
 //Login
 Route::post('/register', App\Http\Controllers\Api\RegisterController::class)->name('register');
@@ -35,15 +35,15 @@ Route::put('users/{user}', [UserController::class, 'update']);
 Route::delete('users/{user}', [UserController::class, 'destroy']);
 
 // Kategori routes
-Route::get('kategoris', [KategoriController::class, 'index']);
-Route::post('kategoris', [KategoriController::class, 'store']);
-Route::get('kategoris/{kategori}', [KategoriController::class, 'show']);
-Route::put('kategoris/{kategori}', [KategoriController::class, 'update']);
-Route::delete('kategoris/{kategori}', [KategoriController::class, 'destroy']);
+Route::get('kategori', [KategoriController::class, 'index']);
+Route::post('kategori', [KategoriController::class, 'store']);
+Route::get('kategori/{kategori}', [KategoriController::class, 'show']);
+Route::put('kategori/{kategori}', [KategoriController::class, 'update']);
+Route::delete('kategori/{kategori}', [KategoriController::class, 'destroy']);
 
 // Barang routes
-Route::get('barangs', [BarangController::class, 'index']);
-Route::post('barangs', [BarangController::class, 'store']);
-Route::get('barangs/{barang}', [BarangController::class, 'show']);
-Route::put('barangs/{barang}', [BarangController::class, 'update']);
-Route::delete('barangs/{barang}', [BarangController::class, 'destroy']);
+Route::get('barang', [BarangController::class, 'index']);
+Route::post('barang', [BarangController::class, 'store']);
+Route::get('barang/{barang}', [BarangController::class, 'show']);
+Route::put('barang/{barang}', [BarangController::class, 'update']);
+Route::delete('barang/{barang}', [BarangController::class, 'destroy']);
