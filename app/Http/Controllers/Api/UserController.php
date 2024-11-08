@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -15,6 +16,18 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'username'  => 'required',
+            'nama'      => 'required',
+            'password'  => 'required',
+            'level_id'  => 'required',
+            'avatar'    => 'required|image|mimes:jpeg,png,jpg,giv,svg|max:2048'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
         $user = UserModel::create($request->all());
         return response()->json($user, 201);
     }
